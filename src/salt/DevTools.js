@@ -4,9 +4,7 @@ import * as React from 'react'
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
 
 type Props = {
-  overlays: {
-    [string]: React.Component<any, any>
-  }
+  overlays: Array<React.Component<{}>>
 }
 
 /**
@@ -14,21 +12,20 @@ type Props = {
  */
 export default class SaltDevTools extends React.Component<Props> {
   render () {
-    const overlays: Array<[string, React.Component<any, any>]> =
-      Object.keys(this.props.overlays).map(k => [ k, this.props.overlays[k] ])
-
     return <div>
       <BrowserRouter>
         <div>
           <nav style={{ flex: 1 }}>
             <div className='header'>Overlays:</div>
             {
-              overlays.map(([name]) => <NavLink key={name} to={`/${name}`} activeClassName='current'>{name}</NavLink>)
+              this.props.overlays.map((O: any) => <NavLink key={O.name} to={`/${O.name}`} activeClassName='current'>{O.name}</NavLink>)
             }
           </nav>
           <Switch>
             {
-              overlays.map(([name, Overlay]) => <Route key={name} path={`/${name}`} render={() => <Overlay />} />)
+              this.props.overlays.map((O: any) => {
+                return <Route key={O.name} path={`/${O.name}`} render={() => <O />} />
+              })
             }
           </Switch>
         </div>
