@@ -13,24 +13,6 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1"
   },
-  "esdoc": {
-    "source": "./src",
-    "destination": "./docs",
-    "plugins": [
-      {
-        "name": "esdoc-standard-plugin"
-      },
-      {
-        "name": "esdoc-jsx-plugin"
-      },
-      {
-        "name": "esdoc-ecmascript-proposal-plugin",
-        "option": {
-          "all": true
-        }
-      }
-    ]
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -42,10 +24,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^8.2.2",
-    "esdoc": "^1.0.4",
-    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
-    "esdoc-jsx-plugin": "^1.0.0",
-    "esdoc-standard-plugin": "^1.0.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "standard": "^11.0.1"
   },
