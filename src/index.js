@@ -1,8 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import * as React from 'react'
+import * as ReactDOM from 'react-dom'
 import './index.css'
-import App from './App'
-import registerServiceWorker from './registerServiceWorker'
+import DevTools from './salt/DevTools'
+import UITest from './salt/ui/Test'
 
-ReactDOM.render(<App />, document.getElementById('root'))
-registerServiceWorker()
+ReactDOM.render(<DevTools overlays={{UITest}} />, document.getElementById('root'))

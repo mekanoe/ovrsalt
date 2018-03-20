@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "flow-bin": "^0.68.0",
     "pixi.js": "^4.7.1",
-    "pre-commit": "^1.2.2",
+    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-pixi-fiber": "^0.4.0",
@@ -12,24 +13,49 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1"
   },
-  "pre-commit": [
-    "lint"
-  ],
+  "esdoc": {
+    "source": "./src",
+    "destination": "./docs",
+    "plugins": [
+      {
+        "name": "esdoc-standard-plugin"
+      },
+      {
+        "name": "esdoc-jsx-plugin"
+      },
+      {
+        "name": "esdoc-ecmascript-proposal-plugin",
+        "option": {
+          "all": true
+        }
+      }
+    ]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "lint": "standard"
+    "lint": "standard",
+    "docs": "esdoc",
+    "docs:open": "esdoc && open docs/index.html"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/addons": "^3.3.15",
-    "@storybook/react": "^3.3.15",
-    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "esdoc": "^1.0.4",
+    "esdoc-ecmascript-proposal-plugin": "^1.0.0",
+    "esdoc-jsx-plugin": "^1.0.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint-plugin-flowtype": "^2.46.1",
     "standard": "^11.0.1"
+  },
+  "standard": {
+    "ignore": [
+      "/docs"
+    ],
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ]
   }
 }
