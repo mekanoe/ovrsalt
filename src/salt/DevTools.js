@@ -3,8 +3,10 @@
 import * as React from 'react'
 import { BrowserRouter, Switch, Route, NavLink } from 'react-router-dom'
 
+type OverlayClass = Class<React.Component<*, *>>
+
 type Props = {
-  overlays: Array<React.Component<{}>>
+  overlays: Array<OverlayClass>
 }
 
 /**
@@ -18,14 +20,12 @@ export default class SaltDevTools extends React.Component<Props> {
           <nav style={{ flex: 1 }}>
             <div className='header'>Overlays:</div>
             {
-              this.props.overlays.map((O: any) => <NavLink key={O.name} to={`/${O.name}`} activeClassName='current'>{O.name}</NavLink>)
+              this.props.overlays.map((O: OverlayClass) => <NavLink key={O.name} to={`/${O.name}`} activeClassName='current'>{O.name}</NavLink>)
             }
           </nav>
           <Switch>
             {
-              this.props.overlays.map((O: any) => {
-                return <Route key={O.name} path={`/${O.name}`} render={() => <O />} />
-              })
+              this.props.overlays.map((O: OverlayClass) => <Route key={O.displayName} path={`/${O.name}`} render={() => <O />} />)
             }
           </Switch>
         </div>

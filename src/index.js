@@ -1,7 +1,13 @@
+// @flow
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import './index.css'
 import DevTools from './salt/DevTools'
 import UITest from './salt/ui/Test'
 
-ReactDOM.render(<DevTools overlays={[ UITest ]} />, document.getElementById('root'))
+const root = document.getElementById('root')
+if (root != null) {
+  ReactDOM.render(<DevTools overlays={[ UITest ]} />, root)
+} else {
+  throw new Error('No root element found.')
+}
