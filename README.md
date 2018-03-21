@@ -13,4 +13,4 @@ The biggest implementation detail is how to get things traditionally done in the
 
 The other thing of note is that this *must* be easy to develop for, ideally in a browser. I do not want to make a custom renderer or react-native platform, this is too much work, and doesn't interest me. I basically want to write overlays on my Macbook without a VR HMD in my hands, but still have the exact same experience when I put one on.
 
-
+The OpenVR renderer will only work on Windows, but as many components as possible should remain intact for speedy overlay development in the browser.
