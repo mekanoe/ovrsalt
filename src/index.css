@@ -5,8 +5,9 @@ body {
   background-image: linear-gradient(to right bottom, #131b27, #121620, #0f1119, #090a11, #020205);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 100vw;
-  height: 100vh;
+  width: 99vw;
+  height: 99vh;
+  overflow: hidden;
 }
 
 nav {
@@ -32,3 +33,10 @@ nav {
     background-color: hsla(0, 0%, 100%, 0.2);
     color: #f84949;
   }
+
+main {
+  margin: 0 auto;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}

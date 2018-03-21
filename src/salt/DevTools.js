@@ -23,11 +23,13 @@ export default class SaltDevTools extends React.Component<Props> {
               this.props.overlays.map((O: OverlayClass) => <NavLink key={O.name} to={`/${O.name}`} activeClassName='current'>{O.name}</NavLink>)
             }
           </nav>
-          <Switch>
-            {
-              this.props.overlays.map((O: OverlayClass) => <Route key={O.displayName} path={`/${O.name}`} render={() => <O />} />)
-            }
-          </Switch>
+          <main>
+            <Switch>
+              {
+                this.props.overlays.map((O: OverlayClass) => <Route key={O.name} path={`/${O.name}`} render={() => <O />} />)
+              }
+            </Switch>
+          </main>
         </div>
       </BrowserRouter>
     </div>
