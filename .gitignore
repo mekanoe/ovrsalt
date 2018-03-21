@@ -23,3 +23,5 @@ yarn-error.log*
 \.vs/
 
 Backend/Debug/
+
+Backend/x64/
