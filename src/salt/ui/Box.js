@@ -86,7 +86,7 @@ export default class Box extends PIXIComponent<BoxProps> {
         }
       })
     }
-    
+
     // top render
     // if we're rounding, we'll use rounded rects, otherwise not.
     withColor(o, style.background, () => {
