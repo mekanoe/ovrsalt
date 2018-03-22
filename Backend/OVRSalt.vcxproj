@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{922F27B4-D666-43AB-9918-D3DD6644ED2E}</ProjectGuid>
+    <ProjectGuid>{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Backend</RootNamespace>
+    <RootNamespace>OVRSalt</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,7 +151,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Backend.cpp" />
+    <ClCompile Include="OVRSalt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
