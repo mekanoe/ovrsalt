@@ -107,6 +107,11 @@ int getShitToScreen() {
 			return 1;
 		}
 
+		eOverlayError = vr::VROverlay()->SetOverlayWidthInMeters(hOverlay, 0.5);
+		if (!checkOverlayError(eOverlayError, "set width")) {
+			return 1;
+		}
+
 		eOverlayError = vr::VROverlay()->ShowOverlay(hOverlay);
 		if (!checkOverlayError(eOverlayError, "show overlay")) {
 			return 1;
