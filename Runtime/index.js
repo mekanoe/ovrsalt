@@ -20,7 +20,13 @@ async function main () {
   const dom = new JSDOM(`<!doctype html><meta charset=utf-8><div id=root>`, { pretendToBeVisual: true, runScripts: 'outside-only' })
 
   const overlayPath = path.join(__dirname, '../Frontend/build', `${overlay}.bundle.js`)
-  const overlayBundle = await fs.readFile(overlayPath, { encoding: 'utf-8' })
+  let overlayBundle 
+  try {
+    overlayBundle = await fs.readFile(overlayPath, { encoding: 'utf-8' })
+  } catch (e) {
+    console.error('bundle load failed with', e.code)
+    process.exit(1)
+  }
 
   let err = false
 
