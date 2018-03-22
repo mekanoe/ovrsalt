@@ -1,0 +1,12 @@
+{
+    "@@": "this is a fix for vscode's standard plugin complaining for dumb reasons. not a real package.json", 
+    "standard": {
+        "parser": "babel-eslint",
+        "globals": [
+            "Class"
+        ],
+        "plugins": [
+            "flowtype"
+        ]
+    }
+}
