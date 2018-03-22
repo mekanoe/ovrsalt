@@ -1,9 +1,10 @@
 // @flow
 import * as React from 'react'
-import { BoxStyle, defaultStyle, withColor } from './BoxStyle'
+import { defaultStyle, withColor } from './BoxStyle'
+import type { BoxStyle } from './BoxStyle'
 import PIXIComponent from '../PIXIComponent'
 import { Graphics } from 'pixi.js'
-import { Point, Size } from '../types'
+import type { Point, Size } from '../types'
 // import type { ReactChild } from 'react'
 
 type BoxProps = {

@@ -1,7 +1,8 @@
 // @flow
 import * as React from 'react'
 import { MemoryRouter } from 'react-router'
-import { Stage, StageProperties } from 'react-pixi-fiber'
+import { Stage } from 'react-pixi-fiber'
+import type { StageProperties } from 'react-pixi-fiber'
 
 export type OverlayProps = StageProperties & {
   children: any

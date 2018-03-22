@@ -3,12 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "canvas-prebuilt": "^1.6.5-prerelease.1",
     "color": "^3.0.0",
     "flow-bin": "^0.68.0",
-    "jsdom": "^11.6.2",
+    "fs-extra": "^5.0.0",
+    "npm-run-all": "^4.1.2",
     "pixi.js": "^4.7.1",
-    "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-pixi-fiber": "^0.4.0",
@@ -18,7 +17,9 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build:overlays": "rollup -c",
+    "build": "npm-run-all build:overlays",
+    "build:react": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "standard",
@@ -26,8 +27,20 @@
     "docs:open": "esdoc && open docs/index.html"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "eslint-plugin-flowtype": "^2.46.1",
+    "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-json": "^2.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.2.0",
+    "rollup-plugin-node-resolve": "^3.3.0",
     "standard": "^11.0.1"
   },
   "standard": {

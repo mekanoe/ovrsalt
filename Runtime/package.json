@@ -1,0 +1,25 @@
+{
+  "name": "ovrsalt-runtime",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js",
+    "build:bin": "pkg . --target host --output build/bin/OVRSaltRuntime.exe",
+    "build:copy-native": "copy .\\node_modules\\canvas-prebuilt\\canvas\\build\\Release\\canvas.node .\\build",
+    "build": "npm-run-all build:bin build:copy-native",
+    "start:bin": "npm-run-all build && ./build/bin/OVRSaltRuntime.exe"
+  },
+  "pkg": {
+    "assets": "../Frontend/build/*.js"
+  },
+  "bin": "index.js",
+  "dependencies": {
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
+    "fs-extra": "^5.0.0",
+    "jsdom": "^11.6.2",
+    "npm-run-all": "^4.1.2",
+    "pkg": "^4.3.0"
+  }
+}
