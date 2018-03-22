@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "canvas-prebuilt": "^1.6.5-prerelease.1",
     "color": "^3.0.0",
     "flow-bin": "^0.68.0",
+    "jsdom": "^11.6.2",
     "pixi.js": "^4.7.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
