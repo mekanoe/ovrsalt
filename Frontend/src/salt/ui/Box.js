@@ -4,6 +4,7 @@ import { BoxStyle, defaultStyle, withColor } from './BoxStyle'
 import PIXIComponent from '../PIXIComponent'
 import { Graphics } from 'pixi.js'
 import { Point, Size } from '../types'
+// import type { ReactChild } from 'react'
 
 type BoxProps = {
   style?: BoxStyle,
@@ -14,7 +15,8 @@ type BoxProps = {
   x: number,
   y: number,
   width: number,
-  height: number
+  height: number,
+  children?: React.Node
 }
 
 /**

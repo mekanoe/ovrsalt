@@ -4,7 +4,7 @@ import { CustomPIXIComponent } from 'react-pixi-fiber'
 import * as PIXI from 'pixi.js'
 
 type Props = {
-  children?: string | number | React.Element<any>
+  children?: React.Node
 } & {}
 
 // because we can do this like real adults.

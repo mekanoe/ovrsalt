@@ -21,7 +21,10 @@ export default class UITest extends React.Component<{||}> {
         height={576 - 4}
         style={{background: '#000c09', roundness: 2, padding: 10, margin: 0, border: { width: 2, color: 'blue' }}}
       >
-        <Box x={0} y={0} width={100} height={100} style={{ }} />
+        <Box x={0} y={0} width={100} height={100} style={{ background: 'white' }} />
+        <Box x={100} y={0} width={100} height={100} style={{ background: 'red' }} />
+        <Box x={100} y={100} width={100} height={100} style={{ background: 'blue' }} />
+        <Box x={0} y={100} width={100} height={100} style={{ background: 'green' }} />
       </Box>
     </Overlay>
   }
