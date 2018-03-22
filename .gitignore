@@ -1,1 +1,9 @@
 .vs/
+.vscode/
+x64/
+Debug/
+Backend/openvr_api\.dll
+
+Backend/openvr_api\.pdb
+
+Backend/OVRSalt\.rc
