@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <Shlwapi.h>
 #pragma comment(lib, "shlwapi.lib")
+#include <random>
+#include <algorithm>
 
 using namespace vr;
 using namespace std;
@@ -12,6 +14,20 @@ std::string GetWorkingDir() {
 	GetCurrentDirectoryA(MAX_PATH, path);
 	PathAddBackslashA(path);
 	return path;
+}
+
+std::wstring randomString(size_t length) {
+	auto randchar = []() -> char {
+		const char charset[] =
+			"0123456789"
+			"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+			"abcdefghijklmnopqrstuvwxyz";
+		const size_t max_index = (sizeof(charset) - 1);
+		return charset[rand() % max_index];
+	};
+	std::wstring str(length, 0);
+	std::generate_n(str.begin(), length, randchar);
+	return str;
 }
 
 std::string getTrackedDeviceString(vr::IVRSystem *pHmd, vr::TrackedDeviceIndex_t unDevice, vr::TrackedDeviceProperty prop)
@@ -64,6 +80,24 @@ bool checkOverlayError(vr::VROverlayError err, const char *state) {
 	return true;
 }
 
+int renderProcess(vr::IVRSystem *pVRSystem, vr::VROverlayHandle_t *hOverlay) {
+	
+	std::wstring sPipeName = randomString(10);
+	std::wstring sArgs = L"UITest " + sPipeName;
+	std::wstring sPath = L"..\\Runtime\\build\\bin\\OVRSaltRuntime.exe";
+
+	wcout << "Starting: " << sPath.c_str() << " " << sArgs.c_str() << endl;
+
+	HINSTANCE nProcessOk = ShellExecute(NULL, NULL, sPath.c_str(), sArgs.c_str(), NULL, SW_HIDE);
+	if (int(nProcessOk) <= 32) { 
+		printf("Create process failed (%d).\n", GetLastError());
+		return 1;
+	}
+
+	cout << "waiting..." << endl;
+	
+	return 0;
+}
 
 int getShitToScreen() {
 	vr::EVRInitError eInitError = vr::VRInitError_None;
@@ -117,7 +151,8 @@ int getShitToScreen() {
 			return 1;
 		}
 
-		std::cout << "Overlay should be visible..." << std::endl;
+		std::cout << "Overlay should work. Let's start the runtime thread." << std::endl;
+		renderProcess(pVRSystem, &hOverlay);
 	}
 
 
@@ -130,6 +165,7 @@ int main(int argc, char **argv) {
 		<< "=====================" << std::endl
 		<< "Starting OVRSalt Test" << std::endl
 		<< "=====================" << std::endl
+		<< "Working dir: " << GetWorkingDir().c_str() << std::endl
 		<< std::endl;
 
 	int exit = getShitToScreen();
