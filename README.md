@@ -34,6 +34,7 @@ git clone --recursive https://github.com/kayteh/ovrsalt.git
 - Visual Studio 2017
 - Node.js 9.x (ideally installed at the default node.js install location if on Windows.)
 - Yarn
+- SteamVR
 
 ### General Setup
 
@@ -47,6 +48,10 @@ If you plan to develop VR-related systems, follow this path.
 - In Frontend, `yarn build`
 - In Runtime, `yarn build`, (Runtime **must** be built after Frontend.)
 - In Backend, build the solution, run it.
+
+*If you do not have a VR HMD connected, you must turn on SteamVR's "null" driver. This obviously means you miss out on a lot of features, but you can still test if displaying works.*
+
+*On that note, It's possible this all works with Daydream/Gear/Cardboard/PS4VR right now. YMMV.*
 
 ### UI
 
