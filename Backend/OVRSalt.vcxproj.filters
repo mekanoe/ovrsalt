@@ -21,6 +21,18 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="lib\openvr-sdk\headers\openvr_capi.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lib\openvr-sdk\headers\openvr.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OVRSalt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -29,21 +41,32 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="OVRSalt-poc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="OVRSalt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="lib\openvr-sdk\bin\win64\openvr_api.dll">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="lib\openvr-sdk\bin\win64\openvr_api.pdb">
-      <Filter>Resource Files</Filter>
-    </None>
+    <ClCompile Include="Overlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\fixtures\qtqtqtq.png">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="lib\openvr-sdk\lib\win64\openvr_api.lib">
+      <Filter>Resource Files</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OVRSalt.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

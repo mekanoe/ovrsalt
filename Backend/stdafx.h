@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include <iostream>
+#include <map>
 
-#include <openvr.h>
-#include <openvr_capi.h>
+#include "lib\openvr-sdk\headers\openvr.h"
+//#include "lib\openvr-sdk\headers\openvr_capi.h"
