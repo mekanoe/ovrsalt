@@ -213,6 +213,10 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <PostBuildEvent>
+      <Command>powershell -ExecutionPolicy Unrestricted $(ProjectDir)\..\tool.ps1 rel $(OutDir)</Command>
+      <Message>Building Production Run</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="lib\openvr-sdk\headers\openvr.h">

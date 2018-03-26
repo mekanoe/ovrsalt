@@ -19,6 +19,11 @@ namespace ovrsalt {
 		~OVRSalt();
 		bool StartVR();
 		void Shutdown();
+		Overlay* GetOverlay(const std::string name);
+		Overlay* GetOverlayIPC(const std::string ipc);
+
+		bool StartOverlays(std::string &strOverlays);
+		bool StartOverlay(const std::string strOverlay);
 
 	};
 

@@ -10,9 +10,6 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
-		Debug-NoVR|Any CPU = Debug-NoVR|Any CPU
-		Debug-NoVR|x64 = Debug-NoVR|x64
-		Debug-NoVR|x86 = Debug-NoVR|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
@@ -23,11 +20,6 @@ Global
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug|x64.Build.0 = Debug|x64
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug|x86.ActiveCfg = Debug|Win32
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug|x86.Build.0 = Debug|Win32
-		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug-NoVR|Any CPU.ActiveCfg = Debug-NoVR|Win32
-		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug-NoVR|x64.ActiveCfg = Debug-NoVR|x64
-		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug-NoVR|x64.Build.0 = Debug-NoVR|x64
-		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug-NoVR|x86.ActiveCfg = Debug-NoVR|Win32
-		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Debug-NoVR|x86.Build.0 = Debug-NoVR|Win32
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Release|Any CPU.ActiveCfg = Release|Win32
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Release|x64.ActiveCfg = Release|x64
 		{8A08F603-7FD3-4CE9-9ACF-755F83B805C6}.Release|x64.Build.0 = Release|x64

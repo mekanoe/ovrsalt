@@ -1,5 +1,6 @@
 #pragma once
 #include <windows.h>
+#include "utils.h"
 
 namespace ovrsalt {
 
@@ -16,7 +17,6 @@ namespace ovrsalt {
 		bool StartRenderer();
 
 	private:
-		std::string GenerateID();
 		HANDLE m_hRendererHandle;
 	};
 

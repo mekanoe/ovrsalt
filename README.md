@@ -35,19 +35,18 @@ git clone --recursive https://github.com/kayteh/ovrsalt.git
 - Node.js 9.x (ideally installed at the default node.js install location if on Windows.)
 - Yarn
 - SteamVR
+- PowerShell ~~or bash~~
 
-### General Setup
-
-- In Frontend, `yarn`
-- In Runtime, `yarn`
+*TODO: Add bash tooling, probably via a codegen tool.*
 
 ### VR
 
 If you plan to develop VR-related systems, follow this path.
 
-- In Frontend, `yarn build`
-- In Runtime, `yarn build`, (Runtime **must** be built after Frontend.)
-- In Backend, build the solution, run it.
+```ps1
+PS> .\tool.ps1 vr
+# then build/run the Backend solution.
+```
 
 *If you do not have a VR HMD connected, you must turn on SteamVR's "null" driver. This obviously means you miss out on a lot of features, but you can still test if displaying works.*
 
@@ -58,7 +57,9 @@ If you plan to develop VR-related systems, follow this path.
 If you just plan to work on the UI, follow this path. This path does not currently mirror to VR. 
 This is a planned feature of the development toolkit.
 
-- In Frontend, `yarn start`
+```ps1
+PS> .\tool.ps1 ui
+```
 
 ## Current Status
 

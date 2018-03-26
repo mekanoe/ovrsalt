@@ -1,5 +1,5 @@
 {
-    "@@": "this is a fix for vscode's standard plugin complaining for dumb reasons. not a real package.json", 
+    "@@": "this is a fix for vscode's standard plugin complaining for dumb reasons. not a real package.json, also gives us some scripts in the root.", 
     "standard": {
         "parser": "babel-eslint",
         "globals": [
