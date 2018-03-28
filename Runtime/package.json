@@ -16,10 +16,15 @@
   },
   "bin": "index.js",
   "dependencies": {
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
     "canvas-prebuilt": "^1.6.5-prerelease.1",
     "fs-extra": "^5.0.0",
     "jsdom": "^11.6.2",
+    "msgpack-lite": "^0.1.26",
     "npm-run-all": "^4.1.2",
-    "pkg": "^4.3.0"
+    "pkg": "^4.3.0",
+    "uuid": "^3.2.1"
   }
 }

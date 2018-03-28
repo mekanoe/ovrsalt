@@ -1,14 +1,10 @@
 //
 // entrypoint for our little child renderers
-
+require('babel-register')
 const { JSDOM } = require('jsdom')
 const path = require('path')
 const fs = require('fs-extra')
 const Canvas = require('canvas-prebuilt')
-
-// import { JSDOM } from 'jsdom'
-// import * as path from 'path'
-// import * as fs from 'fs-extra'
 
 async function main () {
   const [overlay, ipcName] = process.argv.slice(2)
