@@ -16,6 +16,8 @@
   },
   "bin": "index.js",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
@@ -26,5 +28,17 @@
     "npm-run-all": "^4.1.2",
     "pkg": "^4.3.0",
     "uuid": "^3.2.1"
+  },
+  "standard": {
+    "ignore": [
+      "/docs"
+    ],
+    "parser": "babel-eslint",
+    "globals": [
+      "Class"
+    ],
+    "plugins": [
+      "flowtype"
+    ]
   }
 }

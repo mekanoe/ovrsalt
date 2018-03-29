@@ -235,7 +235,6 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Overlay.cpp" />
-    <ClCompile Include="OVRSalt-poc.cpp" />
     <ClCompile Include="OVRSalt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -41,9 +41,6 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OVRSalt-poc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="OVRSalt.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

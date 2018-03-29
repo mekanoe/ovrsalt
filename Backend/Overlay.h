@@ -10,6 +10,8 @@ namespace ovrsalt {
 		Overlay(std::string sName, vr::IVRSystem *pVRSystem);
 		~Overlay();
 		void Shutdown();
+		void PipeListener(HANDLE pipe);
+		void StartIPC();
 		std::string m_sIPCId = GenerateID();
 		std::string m_sName;
 		vr::VROverlayHandle_t m_overlayHandle = vr::k_ulOverlayHandleInvalid;

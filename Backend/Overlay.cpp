@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <windows.h>
 #include <time.h>
+#include <thread>
 
 namespace ovrsalt {
 
@@ -22,7 +23,57 @@ namespace ovrsalt {
 		vr::VROverlay()->DestroyOverlay(m_overlayHandle);
 	}
 
+	void Overlay::PipeListener(HANDLE pipe) {
+		bool bGotFirst = false;
+		for (;;) {
+			wchar_t wcBuf[1024];
+			DWORD dwReadBytes = 0;
+			BOOL result = ReadFile(
+				pipe,
+				wcBuf,
+				1024 * sizeof(wchar_t),
+				&dwReadBytes,
+				NULL
+			);
+
+			if (!result) {
+				continue;
+			}
+
+			if (!bGotFirst) {
+				std::cout << "** Got a message, was " << dwReadBytes << "bytes" << std::endl;
+				bGotFirst = true;
+			}
+		}
+	}
+
+	void Overlay::StartIPC() {
+
+		std::wstring wsPipeName = L"\\\\.\\pipe\\ovrsalt\\" + StringToWString(m_sIPCId);
+
+		HANDLE pipe = CreateNamedPipe(
+			LPWSTR(wsPipeName.c_str()), 
+			PIPE_ACCESS_INBOUND, 
+			PIPE_TYPE_BYTE,
+			1,
+			0,
+			0,
+			0,
+			NULL
+		);
+
+		if (pipe == NULL || pipe == INVALID_HANDLE_VALUE) {
+			std::cerr << "Pipe creation error " << GetLastError() << std::endl;
+			return;
+		}
+		
+		PipeListener(pipe);
+	}
+
 	bool Overlay::StartRenderer() {
+		std::thread tIPCPipe (&Overlay::StartIPC, this);
+		tIPCPipe.detach();
+
 		STARTUPINFO si;
 		PROCESS_INFORMATION pi;
 

@@ -2,15 +2,19 @@
 import { JSDOM } from 'jsdom'
 import fs from 'fs-extra'
 import path from 'path'
+import IPC from './IPC'
+
+// forward declaration
+type ImageData = window.ImageData
 
 export default class Runtime {
-  private ipcName: string | null = null
-  private canvas: HTMLCanvasElement
-  private canvCtx: CanvasRenderingContext2D | WebGLRenderingContext
-  private dom: JSDOM
-  private bundle: string
-  private fps: number = 90
-  private IPC: IPC
+  ipcName: string | null = null
+  canvas: HTMLCanvasElement // eslint-disable-line no-undef
+  canvCtx: CanvasRenderingContext2D | WebGLRenderingContext // eslint-disable-line no-undef
+  dom: JSDOM
+  bundle: string
+  fps: number = 0.5
+  IPC: IPC
 
   constructor (bundle: string, ipcName?: string = null) {
     this.bundle = bundle
@@ -18,13 +22,13 @@ export default class Runtime {
     if (ipcName != null || ipcName !== '') {
       this.ipcName = ipcName
     } else {
-      console.warn("No IPC name was set.")
+      console.warn('No IPC name was set.')
     }
   }
 
-  private async loadBundle(name: string): string {
-  const pathname = path.join(__dirname, '../Frontend/build', `${name}.bundle.js`)
-    
+  async loadBundle (name: string): string {
+    const pathname = path.join(__dirname, '../Frontend/build', `${name}.bundle.js`)
+
     try {
       await fs.stat(pathname)
     } catch (e) {
@@ -34,17 +38,22 @@ export default class Runtime {
     return fs.readFile(pathname, { encoding: 'utf-8' })
   }
 
-  private async buildDOM(): void {
+  async buildDOM (): void {
     // construct a minimal dom
     const dom: JSDOM = new JSDOM(`<!doctype html><meta charset=utf-8><div id=root>`, { pretendToBeVisual: true, runScripts: 'outside-only' })
     this.dom = dom
+    dom.window.path = path
+    dom.window.process = process
+    dom.window.OVRSalt = {
+      triggerFlush: () => this.triggerFlush()
+    }
 
     // grab the bundle...
     const bundle: string = await this.loadBundle(this.bundle)
 
     // error container
     let err: Error | null = null
-    
+
     // error tossup helper
     dom.window.exitOnError = (e: Error) => {
       err = e
@@ -52,15 +61,15 @@ export default class Runtime {
 
     // run the bundle..
     try {
-      dom.window.eval(`try{${overlayBundle}}catch(e){console.error('bundle run failed');window.exitOnError(e)}`)
+      dom.window.eval(`try{${bundle}}catch(e){console.error('bundle run failed');window.exitOnError(e)}`)
     } catch (e) {
       err = e
     }
 
     // did it error fast?
     await timeout(10)
-    if (e != null) {
-      throw e
+    if (err != null) {
+      throw err
     }
 
     let retries: number = 0
@@ -74,33 +83,41 @@ export default class Runtime {
     this.canvCtx = this.canvas.getContext('2d')
   }
 
-  private getImageData(): ImageData {
+  getImageData (): ImageData {
     const { width, height } = this.canvas
     return this.canvCtx.getImageData(0, 0, width, height)
   }
 
-  private async updateLoop(): void {
-    while (true) {
-      const data: ImageData = this.getImageData()
-      this.sendIPCPacket(Symbol.for('image'), data)
-
-      await timeout(1000/this.fps)
-    }
+  updateLoop (): void {
+    this.triggerFlush()
+    setTimeout(() => this.updateLoop(), 1000/this.fps)
   }
 
-  private startIPC(): void {
-    this.IPC = new IPC(this.ipcName)
+  triggerFlush (): void {
+    const data: ImageData = this.getImageData()
+    this.IPC.send(data)
   }
 
-  public async start() {
+  startIPC (): void {
+    this.IPC = new IPC()
+    this.IPC.connect(this.ipcName)
+  }
+
+  async start () {
     await this.buildDOM()
     await this.startIPC()
-    setTimeout(this.updateLoop(), 0)
+    setTimeout(() => {
+      try {
+        this.updateLoop()
+      } catch (e) {
+        console.trace('main loop error', e)
+      }
+    }, 0)
   }
 }
 
 const timeout: (ms: number) => Promise<void> = (ms: number) => {
-  return new Promise<null>((resolve) => {
+  return new Promise((resolve) => {
     setTimeout(() => { resolve() }, ms)
   })
 }
