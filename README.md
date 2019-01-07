@@ -1,5 +1,7 @@
 # OVRSalt
 
+**Scrapped Project.**
+
 a very very very very WIP OpenVR overlay system using React + Pixi.JS.
 
 ## Abstract/Story Time
